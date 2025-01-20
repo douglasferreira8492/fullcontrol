@@ -1,0 +1,28 @@
+{
+    "name": "douglasferreira8492/fullcontrol",
+    "description": "Iniciando projeto fullcontrol",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Source\\": "source/"
+        },
+        "files": [
+            "source/Boot/Config.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Douglas Ferrreira Soares",
+            "email": "douglasferreirasoares9292@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "coffeecode/router":"2.0.*",
+        "coffeecode/datalayer":"2.0.*",
+        "phpmailer/phpmailer": "6.9.*",
+        "league/plates":"3.*"
+    }
+}
