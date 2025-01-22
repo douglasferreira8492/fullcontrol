@@ -59,7 +59,7 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="<?= url("view/script/")?>confirmEmail.js"></script>
+    <script src="<?= url("view/script/")?>CreateConfirmEmail.js"></script>
     <script src="<?= url("assets/template/") ?>vendors/base/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- inject:js -->

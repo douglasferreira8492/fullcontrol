@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -16,6 +17,7 @@
     <!-- endinject -->
     <link rel="shortcut icon" href="<?= url("assets/template/") ?>images/favicon.png" />
 </head>
+
 <body>
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
@@ -43,7 +45,7 @@
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-lg" placeholder="Confirme a senha" id="password-confirm">
                                 </div>
-                                <h4 class="mb-5"><small class="font-weight-light text-danger" id="text-message"><?= isset($data['err']) ? "Ocorreu um erro. Verifique seu e-mail" : ""?></small></h4>
+                                <h4 class="mb-5"><small class="font-weight-light text-danger" id="text-message"><?= isset($data['err']) ? "Ocorreu um erro. Verifique seu e-mail" : "" ?></small></h4>
                                 <div class="mt-3">
                                     <button type="submit" id="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white">Cadastrar</button>
                                 </div>
@@ -58,29 +60,8 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script>
-        let name = document.getElementById("name");
-        let email = document.getElementById('email');
-        let password = document.getElementById('password');
-        let passwordConfirm = document.getElementById('password-confirm');
-        let button = document.getElementById('button');
-        let textMessage = document.getElementById('text-message');
 
-        button.addEventListener("click", (e) => {
-            if (name.value == '' || email.value == '' || password.value == '' || passwordConfirm.value == '') {
-                textMessage.textContent = 'Você precisa preencher todos os campos!';
-                e.preventDefault()
-            }
-            if (password.value.length < 8) {
-                textMessage.textContent = 'A senha precisa ter no mínimo 8 caracteres!';
-                e.preventDefault()
-            }
-            if (password.value != passwordConfirm.value) {
-                textMessage.textContent = 'As duas senhas não são iguais!';
-                e.preventDefault()
-            }
-        });
-    </script>
+    <script src="<?= url("view/script/") ?>Create.js"></script>
     <script src="<?= url("assets/template/") ?>vendors/base/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- inject:js -->
@@ -91,4 +72,5 @@
 
 
 </body>
+
 </html>
