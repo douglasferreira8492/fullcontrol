@@ -45,7 +45,7 @@
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-lg" placeholder="Confirme a senha" id="password-confirm">
                                 </div>
-                                <h4 class="mb-5"><small class="font-weight-light text-danger" id="text-message"><?= isset($data['err']) ? "Ocorreu um erro. Verifique seu e-mail" : "" ?></small></h4>
+                                <h4 class="mb-5"><small class="font-weight-light text-danger" id="text-message"></small></h4>
                                 <div class="mt-3">
                                     <button type="submit" id="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white">Cadastrar</button>
                                 </div>
@@ -61,6 +61,7 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
 
+    <script src="<?= url("assets/") ?>jquery.js"></script>
     <script src="<?= url("view/script/") ?>Create.js"></script>
     <script src="<?= url("assets/template/") ?>vendors/base/vendor.bundle.base.js"></script>
     <!-- endinject -->

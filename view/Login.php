@@ -30,15 +30,6 @@
                                 <h3>Full Control | Login</h3>
                                 <hr />
                             </div>
-                            <?php if (isset($data['mess']))
-                                if ($data['mess'] == 'sucesso'): ?>
-                                <small class="text-success">Usuário cadastrado! Faça o login</small>
-                            <?php
-                                elseif ($data['mess'] == 'falhou'): ?>
-                                <small class="text-danger">Houve um erro. verifique seus dados e tente novamente.</small>
-                            <?php
-                                endif;
-                            ?>
                             <form class="pt-3">
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="E-mail" name="email">

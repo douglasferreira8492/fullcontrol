@@ -15,7 +15,6 @@ class Web
     {
         $this->view = new Engine(__DIR__."/../../view/","php");
     }
-
     /**
      *  PAGINA PARA CRIAR USUÁRIO
      */
@@ -26,7 +25,6 @@ class Web
             'data'  => $data
         ]);
     }
-
     /**
      *  PAGINA PRARA CONFIRMAR E-MAIL
      */
@@ -73,16 +71,15 @@ class Web
             'data'  => $data
         ]);
     }
-
     /**
      *  PROCURA EMAIL
      */
-    public function getEmail(string $email)
+    public function getEmail(array $data): void
     {
-        $userEmail = (new User())->find("email = :uemail","uemail={$email}")->fetch(true);
-        return isset($userEmail[0]->email) ? $userEmail[0]->email : $userEmail;
+        $callback['data'] = $data;
+        $userEmail = (new User())->find("email = :uemail","uemail={$data['email']}")->fetch(true);
+        echo json_encode(isset($userEmail[0]->email) ? $userEmail[0]->email : $userEmail);
     }
-
     /**
      *  EXIBE ERROS
      */

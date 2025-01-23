@@ -13,10 +13,9 @@ $route->namespace('Source\App');
  */
 $route->group(null);
 $route->get("/","Web:login");                          // PÁGINA DE LOGIN
-$route->get("/{mess}", "Web:login");                   // LOGIN COM MENSSAGEM
 $route->get("/criar", "Web:create");                   // FORMULARIO PARA CRIAR USER
-$route->get("/criar/{err}", "Web:create");             // SE DER ERRO AO ENVIAR EMAIL, VOLTA DO CONFIRMAR EMAIL
 $route->post("/criar", "Web:createUserConfirmEmail");  // ENVIA EMAIL E CONFIRMA CODIGO
+$route->post("/procura/email", "Web:getEmail");
 $route->post("/criar/usuario", "Web:createUser");      // INSERE NO BANCO
 
 /**
