@@ -20,10 +20,31 @@ class Web
      */
     public function create(array $data):void
     {
-        echo $this->view->render("Create", [
-            'title' => SITE . " | Criar",
-            'data'  => $data
-        ]);
+
+        if($_SERVER['REQUEST_METHOD'] == "POST")
+        {
+            if(count($data) == 0) exit;
+            
+            $user = new User();
+            $user->nome     = $data['name'];
+            $user->email    = $data['email'];
+            $user->password = password_hash($data['password'],PASSWORD_DEFAULT);
+            $user->ativo    = true;
+            $user->admin_level  = "1";
+
+            if($user->save())
+            {
+                echo json_encode($data['returnInsert'] = 'true');
+            }
+            
+
+        } else if($_SERVER['REQUEST_METHOD'] == "GET") {
+            echo $this->view->render("Create", [
+                'title' => SITE . " | Criar",
+                'data'  => $data
+            ]);
+        }
+       
     }
     /**
      *  PAGINA PRARA CONFIRMAR E-MAIL

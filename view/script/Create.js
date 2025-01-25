@@ -11,9 +11,8 @@ form.addEventListener('submit',(e) =>{
     returnVerify = verify(form)
     if(returnVerify)
     {
-        getEmail(form)
+        getEmail(form);
     }
-    
 });
 
 async function getEmail(form)
@@ -25,16 +24,14 @@ async function getEmail(form)
         body: data
     });
     const content = await rawResponse.json();
-
-    console.log(content)
     if(content == null)
     {
         textMessage.textContent = "Carregando...";
-        form.submit()
+        form.submit();
         
     }else if(content.length > 0){
         textMessage.textContent = "E-mail ja cadastrado. Utilize outro e-mail.";
-        return
+        return;
     }
 }
 

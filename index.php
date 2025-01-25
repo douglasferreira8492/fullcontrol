@@ -12,11 +12,12 @@ $route->namespace('Source\App');
  *  ROTA PRINCIPAL
  */
 $route->group(null);
-$route->get("/","Web:login");                          // PÁGINA DE LOGIN
-$route->get("/criar", "Web:create");                   // FORMULARIO PARA CRIAR USER
-$route->post("/criar", "Web:createUserConfirmEmail");  // ENVIA EMAIL E CONFIRMA CODIGO
-$route->post("/procura/email", "Web:getEmail");
-$route->post("/criar/usuario", "Web:createUser");      // INSERE NO BANCO
+$route->get("/","Web:login");                            // PÁGINA DE LOGIN
+
+$route->get("/criar", "Web:create");                     // FORMULARIO PARA CRIAR USER
+$route->post("/criar", "Web:create");                     // FORMULARIO PARA CRIAR USER
+$route->post("/confirm", "Web:createUserConfirmEmail");  // ENVIA EMAIL E CONFIRMA CODIGO
+$route->post("/procura/email", "Web:getEmail");          // UTILIZADO PELO AJAX
 
 /**
  *  ERROR

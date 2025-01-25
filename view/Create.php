@@ -31,7 +31,7 @@
                                 <h3>Cadastrar usuário</h3>
                             </div>
                             <h6 class="font-weight-light">Insira os dados.</h6>
-                            <form class="pt-3" method="POST" action="<?= url("criar") ?>">
+                            <form class="pt-3" method="POST" action="<?= url("confirm") ?>">
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" placeholder="Nome completo" name="name" id="name">
                                 </div>

@@ -29,10 +29,11 @@
                             <div class="brand-logo">
                                 <!-- <img src="<?php //url("assets/template/") 
                                                 ?>images/logo.svg" alt="logo"> -->
+
                                 <h3>Cadastrar usuário</h3>
                             </div>
                             <h5 class="font-weight-light">E-mail enviado! Confirme o código.</h5>
-                            <form class="pt-3" method="POST" action="<?= url('criar/usuario') ?>">
+                            <form class="pt-3">
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" placeholder="Digite o código" name="confirm" id="confirm">
                                 </div>
@@ -45,8 +46,10 @@
                                 <div class="form-group">
                                     <input type="hidden" value="<?= $this->e($data['password']) ?>" class="form-control form-control-lg" placeholder="Crie uma senha" name="password" id="password">
                                 </div>
-                                <h4 class="mb-5"><small class="font-weight-light text-danger" id="text-message"></small></h4>
-                                <button type="submit" id="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white">Confirmar</button>
+                                <h3 class="mb-5"><small class="text-success" id="text-message-success"></small></h3>
+                                <h3 class="mb-5"><small class="text-danger" id="text-message"></small></h3>
+                                <button type="submit" id="button-confirm" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white">Confirmar</button>
+                                <a style="display:none;" id="button-login" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white" href="<?= url()?>">Login</a>
                         </div>
                         </form>
                     </div>
@@ -59,7 +62,7 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="<?= url("view/script/")?>CreateConfirmEmail.js"></script>
+    <script src="<?= url("view/script/") ?>CreateConfirmEmail.js"></script>
     <script src="<?= url("assets/template/") ?>vendors/base/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- inject:js -->
