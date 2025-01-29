@@ -17,6 +17,7 @@
     <!-- endinject -->
     <link rel="shortcut icon" href="<?= url('assets/template/') ?>images/favicon.png" />
 </head>
+
 <body>
     <div class="container-scroller">
         <div class="container-fluid page-body-wrapper full-page-wrapper">
@@ -30,15 +31,20 @@
                                 <h3>Full Control | Login</h3>
                                 <hr />
                             </div>
-                            <form class="pt-3">
+                            <form class="pt-3" method="POST">
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="E-mail" name="email">
+                                    <input type="email" class="form-control form-control-lg" id="email" placeholder="E-mail" name="email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Senha" name="password">
+                                    <input type="password" class="form-control form-control-lg" id="password" placeholder="Senha" name="password">
+                                </div>
+                                <h3 class="mb-5"><small class="text-success" id="text-message-success"></small></h3>
+                                <h3 class="mb-5"><small class="text-danger" id="text-message-danger"></small></h3>
+                                <div class="mt-4 font-weight-light">
+                                    <a href="<?=url('recoverPassword')?>" class="text-primary">Esqueceu a senha?</a>
                                 </div>
                                 <div class="mt-3">
-                                    <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="<?= url('assets/template/') ?>index.html">Logar</a>
+                                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Logar</button>
                                 </div>
                             </form>
                         </div>
@@ -51,6 +57,7 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+    <script src="<?= url('view/web/script/') ?>Login.js"></script>
     <script src="<?= url('assets/template/') ?>vendors/base/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- inject:js -->

@@ -1,6 +1,8 @@
 <?php
 define("ROOT", "http://localhost/fullcontrol");
 define("SITE","Full Control");
+define("SESSION_USER",'User');
+define('HASH', 'Egxnd3Mtd2l6LXNlcnAiDWhhc2ggZXhlbXBsb3MyBRAAGIAEMgYQABgWGB5Iy1lQHtRdVYvFhwCngBkAEAmAGhAqABnReqAQYwLjE5LjG4AQPIAQD4AQGYAhygAuIWqAIGwgIKEAAYsAMY');
 
 const DATA_LAYER_CONFIG = [
     "driver" => "mysql",

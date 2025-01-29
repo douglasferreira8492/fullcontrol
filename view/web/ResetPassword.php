@@ -30,39 +30,33 @@
                                 <!-- <img src="<?php //url("assets/template/") 
                                                 ?>images/logo.svg" alt="logo"> -->
 
-                                <h3>Cadastrar usuário</h3>
+                                <h3>Criar nova senha</h3>
                             </div>
-                            <h5 class="font-weight-light">E-mail enviado! Confirme o código.</h5>
-                            <form class="pt-3">
+                            <h5 class="font-weight-light" id="text-insert-email">Digite a nova senha.</h5>
+                            <form method="POST" action="<?= url('resetPassword') ?>" class="pt-3">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" placeholder="Digite o código" name="confirm" id="confirm">
+                                    <input type="password" class="form-control form-control-lg" placeholder="Senha" name="password" id="password">
                                 </div>
                                 <div class="form-group">
-                                    <input type="hidden" value="<?= $this->e($data['name']) ?>" class="form-control form-control-lg" placeholder="Nome completo" name="name" id="name">
+                                    <input type="password" class="form-control form-control-lg" placeholder="Confirmar senha" name="password-confirm" id="password-confirm">
                                 </div>
-                                <div class="form-group">
-                                    <input type="hidden" value="<?= $this->e($data['email']) ?>" class="form-control form-control-lg" placeholder="E-mail" name="email" id="email">
-                                </div>
-                                <div class="form-group">
-                                    <input type="hidden" value="<?= $this->e($data['password']) ?>" class="form-control form-control-lg" placeholder="Crie uma senha" name="password" id="password">
-                                </div>
+                                <input type="hidden" value="<?= $id ?>" name="id">
+                                <input type="hidden" value="<?= $hashCode ?>" name="hashCode">
                                 <h3 class="mb-5"><small class="text-success" id="text-message-success"></small></h3>
-                                <h3 class="mb-5"><small class="text-danger" id="text-message"></small></h3>
-                                <button type="submit" id="button-confirm" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white">Confirmar</button>
-                                <a style="display:none;" id="button-login" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white" href="<?= url()?>">Login</a>
+                                <h3 class="mb-5"><small class="text-danger" id="text-message-danger"></small></h3>
+                                <button type="submit" id="button-confirm" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white">Atualizar</button>
+                                <a style="display:none;" id="button-login" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white" href="<?= url() ?>">Login</a>
+                            </form>
                         </div>
-                        </form>
                     </div>
                 </div>
             </div>
+            <!-- content-wrapper ends -->
         </div>
-        <!-- content-wrapper ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
+        <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="<?= url("view/script/") ?>CreateConfirmEmail.js"></script>
     <script src="<?= url("assets/template/") ?>vendors/base/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- inject:js -->

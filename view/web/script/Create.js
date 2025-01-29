@@ -4,7 +4,9 @@ let email = document.getElementById('email');
 let password = document.getElementById('password');
 let passwordConfirm = document.getElementById('passwordConfirm');
 let form = document.querySelector('form');
-let textMessage = document.getElementById('text-message');
+
+let textMessageDanger = document.getElementById('text-message-danger');
+let textMessageSuccess = document.getElementById('text-message-success');
 
 form.addEventListener('submit',(e) =>{
     e.preventDefault();
@@ -26,11 +28,12 @@ async function getEmail(form)
     const content = await rawResponse.json();
     if(content == null)
     {
-        textMessage.textContent = "Carregando...";
+        textMessageDanger.textContent  = ""
+        textMessageSuccess.textContent = "Carregando...";
         form.submit();
         
     }else if(content.length > 0){
-        textMessage.textContent = "E-mail ja cadastrado. Utilize outro e-mail.";
+        textMessageDanger.textContent = "E-mail ja cadastrado. Utilize outro e-mail.";
         return;
     }
 }
@@ -43,16 +46,16 @@ function verify(formParams)
         || formParams.passwordConfirm.value == ""
     )
     {
-        textMessage.textContent = "Preencha todos os campos.";
+        textMessageDanger.textContent = "Preencha todos os campos.";
         return false;
     }
     if (formParams.password.value.length < 8 ){
-        textMessage.textContent = "A senha precisa ter no mínimo 8 caracteres.";
+        textMessageDanger.textContent = "A senha precisa ter no mínimo 8 caracteres.";
         return false;
     }
     if (formParams.password.value != formParams.passwordConfirm.value)
     {
-        textMessage.textContent = "As senhas são diferentes.";
+        textMessageDanger.textContent = "As senhas são diferentes.";
         return false;
     }
     return true;

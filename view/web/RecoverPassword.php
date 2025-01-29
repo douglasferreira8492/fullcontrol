@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="<?= url("assets/template/") ?>css/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="<?= url("assets/template/") ?>images/favicon.png" />
+    <input type="hidden" class="form-control form-control-lg" id="number_confirm" value="<?= $data['confirm'] ?>">
 </head>
 
 <body>
@@ -28,27 +29,18 @@
                             <div class="brand-logo">
                                 <!-- <img src="<?php //url("assets/template/") 
                                                 ?>images/logo.svg" alt="logo"> -->
-                                <h3>Cadastrar usuário</h3>
+
+                                <h3>Recuperar senha</h3>
                             </div>
-                            <h6 class="font-weight-light">Insira os dados.</h6>
-                            <form class="pt-3" method="POST" action="<?= url("confirm") ?>">
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" placeholder="Nome completo" name="name" id="name">
-                                </div>
+                            <h5 class="font-weight-light" id="text-insert-email">Digite o seu e-mail.</h5>
+                            <form method="POST" action="" class="pt-3">
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-lg" placeholder="E-mail" name="email" id="email">
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" placeholder="Crie uma senha" name="password" id="password">
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" placeholder="Confirme a senha" name="passwordConfirm" id="passwordConfirm">
-                                </div>
-                                <h3 class="mb-5"><small class="text-danger" id="text-message"></small></h3>
-                                <div class="mt-3">
-                                    <button type="submit" id="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white">Cadastrar</button>
-                                </div>
+                                <h3 class="mb-5"><small class="text-success" id="text-message-success"></small></h3>
+                                <h3 class="mb-5"><small class="text-danger" id="text-message-danger"></small></h3>
+                                <button type="submit" id="button-confirm" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white">Enviar</button>
+                                <a style="display:none;" id="button-login" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white" href="<?= url() ?>">Login</a>
                             </form>
                         </div>
                     </div>
@@ -60,9 +52,7 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-
-    <script src="<?= url("assets/") ?>jquery.js"></script>
-    <script src="<?= url("view/script/") ?>Create.js"></script>
+    <script src="<?= url("view/web/script/") ?>RecoverPassword.js"></script>
     <script src="<?= url("assets/template/") ?>vendors/base/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- inject:js -->
