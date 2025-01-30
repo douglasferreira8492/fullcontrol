@@ -45,8 +45,8 @@
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-lg" placeholder="Confirme a senha" name="passwordConfirm" id="passwordConfirm">
                                 </div>
-                                <h3 class="mb-5"><small class="text-danger" id="text-message-danger"></small></h3>
-                                <h3 class="mb-5"><small class="text-success" id="text-message-success"></small></h3>
+                                <div class="text-danger" id="text-message-danger"></div>
+                                <div class="text-success" id="text-message-success"></div>
                                 <div class="mt-3">
                                     <button type="submit" id="button" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white">Cadastrar</button>
                                 </div>

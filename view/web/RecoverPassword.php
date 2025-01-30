@@ -37,8 +37,8 @@
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-lg" placeholder="E-mail" name="email" id="email">
                                 </div>
-                                <h3 class="mb-5"><small class="text-success" id="text-message-success"></small></h3>
-                                <h3 class="mb-5"><small class="text-danger" id="text-message-danger"></small></h3>
+                                <small class="text-success" id="text-message-success"></small>
+                                <small class="text-danger" id="text-message-danger"></small>
                                 <button type="submit" id="button-confirm" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white">Enviar</button>
                                 <a style="display:none;" id="button-login" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white" href="<?= url() ?>">Login</a>
                             </form>

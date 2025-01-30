@@ -31,6 +31,8 @@ $route->post("/procura/email", "Web:getEmail");           // UTILIZADO PELO AJAX
  */
 $route->group('admin', middleware: \Source\Filter\UserLogin::class);    // GRUPO ADMIN / APLICA FILTRO DE LOGIN
 $route->get('/dashboard', "Admin\Dashboard:dashboard");                 // PÁGINA PRINCIPAL DASHBOARD
+$route->get('/unidade/criar', "Admin\UnidadeComercial:cadastro");       // PÁGINA CRIAR UNIDADE COMERCIAL
+$route->get('/unidade/listar', "Admin\UnidadeComercial:unidadeList");       // PÁGINA CRIAR UNIDADE COMERCIAL
 
 /**
  *  ERROR

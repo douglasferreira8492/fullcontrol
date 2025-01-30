@@ -93,9 +93,7 @@ class Web
                 echo json_encode($resp);
                 exit;
             }
-
             $user = (new User())->find("email = :uemail","uemail={$inputData['email']}")->fetch(true);
-
             if($user == null)
             {
                 $resp = ['status' => 400,'message'=> 'Usuário não encontrado.'];
@@ -210,14 +208,19 @@ class Web
 
         if($_SERVER['REQUEST_METHOD'] == "POST")
         {
+            $resp = [];
+            $inputData = json_decode(file_get_contents('php://input'),true);
+
             try {
-                $user = (new User())->findById($data['id']);
-                $user->password = password_hash($data['password'], PASSWORD_DEFAULT);
+                $user = (new User())->findById($inputData['id']);
+                $user->password = password_hash($inputData['password'], PASSWORD_DEFAULT);
                 $user->reset_hash = '';
                 $user->save();
-                header("Location: " . url());
+                $resp = ["status" => 200,"message" => "Senha atualizada!"];
+                echo json_encode($resp);
             } catch (\Throwable $th) {
-                echo $th->getMessage();
+                $resp = ["status" => 400, "message" => "Erro ao atualizar."];
+                echo json_encode($resp);
             }
 
         }else if($_SERVER['REQUEST_METHOD'] == "GET")

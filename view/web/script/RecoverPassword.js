@@ -1,12 +1,14 @@
 
-let form            = document.querySelector('form');
-let email           = document.getElementById('email');
+// VARIAVEIS
+let form  = document.querySelector('form');
+let email = document.getElementById('email');
 let messageSuccess  = document.getElementById('text-message-success');
 let messageDanger   = document.getElementById('text-message-danger');
 let buttonConfirm   = document.getElementById('button-confirm');
 let buttonLogin     = document.getElementById('button-login');
 let textInsertEmail = document.getElementById('text-insert-email');
 
+// EVENTO AO SUBMETER O FORMULÁRIO
 form.addEventListener('submit',(e)=>{
     e.preventDefault();
     let resp = verify();
@@ -16,15 +18,23 @@ form.addEventListener('submit',(e)=>{
     }
 });
 
+// VERIFICA SE ESTÁ PREENCHIDO E SE É UM E-MAIL VÁLIDO
 function verify()
 {
-    if(email == '')
+    if (email.value == "" || !email.value.match(/^[^\s]+@[^\s]+\.[^\s]+$/))
     {
-        messageDanger.textContent = "Você precisa preencher com o email cadastrado.";
+        messageDanger.textContent = "";
+        const ul = document.createElement('ul');
+        const li = document.createElement('li');
+        li.textContent = "Você precisa preencher com o email cadastrado.";
+        ul.appendChild(li);
+        messageDanger.appendChild(ul);
         return false;
     }
     return true;
 }
+
+//  ENVIA O E-MAIL
 async function pushEmail()
 {
     let url = "http://localhost/fullcontrol/recoverPassword";
@@ -40,14 +50,15 @@ async function pushEmail()
         },
         body: JSON.stringify(data)
     }
-
+    messageDanger.textContent = "";
+    messageSuccess.innerHTML = "<h4 class='mb-4'>Carregando....</h4>";
     const rawResponse = await fetch(url,options);
     const content = await rawResponse.json();
 
     if(content.status == 200)
     {
-        messageSuccess.textContent  = "Email enviado com sucesso!";
-        messageDanger.textContent   = "";
+        messageDanger.textContent = "";
+        messageSuccess.innerHTML = "<h4 class='mb-4'>Email enviado com sucesso!</h4>";
         textInsertEmail.textContent = '';
         buttonConfirm.style.display = 'none';
         buttonLogin.style.display   = 'block';
@@ -55,6 +66,11 @@ async function pushEmail()
     }
     if(content.status == 400)
     {
-        messageDanger.textContent = content.message;
+        messageSuccess.textContent = "";
+        const ul = document.createElement('ul');
+        const li = document.createElement('li');
+        li.textContent = content.message;
+        ul.appendChild(li);
+        messageDanger.appendChild(ul);
     }
 }

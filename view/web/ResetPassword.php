@@ -40,10 +40,11 @@
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-lg" placeholder="Confirmar senha" name="password-confirm" id="password-confirm">
                                 </div>
-                                <input type="hidden" value="<?= $id ?>" name="id">
-                                <input type="hidden" value="<?= $hashCode ?>" name="hashCode">
-                                <h3 class="mb-5"><small class="text-success" id="text-message-success"></small></h3>
-                                <h3 class="mb-5"><small class="text-danger" id="text-message-danger"></small></h3>
+                                <div class="form-group">
+                                    <input type="hidden" value="<?= $id;?>" class="form-control form-control-lg" name="id">
+                                </div>
+                                <small class="text-success" id="text-message-success"></small>
+                                <small class="text-danger" id="text-message-danger"></small>
                                 <button type="submit" id="button-confirm" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white">Atualizar</button>
                                 <a style="display:none;" id="button-login" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn text-white" href="<?= url() ?>">Login</a>
                             </form>
@@ -57,6 +58,7 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+    <script src="<?= url("view/web/script/") ?>ResetPassword.js"></script>
     <script src="<?= url("assets/template/") ?>vendors/base/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- inject:js -->

@@ -91,17 +91,17 @@
                     </li>
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img src="<?=url('assets/template/')?>images/faces/face5.jpg" alt="profile" />
-                            <span class="nav-profile-name"><?= $_SESSION[SESSION_USER]->nome?></span>
+                            <img src="<?= url('assets/template/') ?>images/faces/face5.jpg" alt="profile" />
+                            <span class="nav-profile-name"><?= $_SESSION[SESSION_USER]->nome ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a class="dropdown-item">
                                 <i class="mdi mdi-settings text-primary"></i>
-                                Settings
+                                Configurações
                             </a>
-                            <a class="dropdown-item" href="<?= url('/logout')?>">
+                            <a class="dropdown-item" href="<?= url('/logout') ?>">
                                 <i class="mdi mdi-logout text-primary"></i>
-                                Logout
+                                Sair
                             </a>
                         </div>
                     </li>
@@ -116,7 +116,7 @@
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="index.html">
                             <i class="mdi mdi-home menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
@@ -158,20 +158,18 @@
                             <i class="mdi mdi-emoticon menu-icon"></i>
                             <span class="menu-title">Icons</span>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-                            <i class="mdi mdi-account menu-icon"></i>
-                            <span class="menu-title">User Pages</span>
+                            <i class="mdi mdi-domain menu-icon"></i>
+                            <span class="menu-title">Unidade Comercial</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="auth">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="<?= url('admin/unidade/listar') ?>">Empresas</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html">Equipamentos</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html">Manutenção</a></li>
                             </ul>
                         </div>
                     </li>

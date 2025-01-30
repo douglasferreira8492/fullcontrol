@@ -41,7 +41,7 @@
                                 <h3 class="mb-5"><small class="text-success" id="text-message-success"></small></h3>
                                 <h3 class="mb-5"><small class="text-danger" id="text-message-danger"></small></h3>
                                 <div class="mt-4 font-weight-light">
-                                    <a href="<?=url('recoverPassword')?>" class="text-primary">Esqueceu a senha?</a>
+                                    <a href="<?= url('recoverPassword') ?>" class="text-primary">Esqueceu a senha?</a>
                                 </div>
                                 <div class="mt-3">
                                     <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Logar</button>
