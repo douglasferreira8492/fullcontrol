@@ -13,13 +13,13 @@ $route->namespace('Source\App');
  *  ROTA PRINCIPAL
  */
 $route->group(null);
-$route->get("/","Web:login");                             // PÁGINA DE LOGIN
-$route->post("/", "Web:login");                           // PÁGINA DE LOGIN
-$route->get('/logout', "Web:logout");                     // DESLOGA O USUÁRIO
-$route->get("/recoverPassword", "Web:recoverPassword");   // RECUPERA A SENHA 
-$route->post("/recoverPassword", "Web:recoverPassword");   // RECUPERA A SENHA POST
-$route->get("/resetPassword/{id}/{hashCode}", "Web:resetPassword");   //  
-$route->post("/resetPassword", "Web:resetPassword");                  // 
+$route->get("/","Web:login");                                           // PÁGINA DE LOGIN
+$route->post("/", "Web:login");                                         // PÁGINA DE LOGIN
+$route->get('/logout', "Web:logout");                                   // DESLOGA O USUÁRIO
+$route->get("/recoverPassword", "Web:recoverPassword");                 // RECUPERA A SENHA 
+$route->post("/recoverPassword", "Web:recoverPassword");                // RECUPERA A SENHA POST
+$route->get("/resetPassword/{id}/{hashCode}", "Web:resetPassword");     //  
+$route->post("/resetPassword", "Web:resetPassword");                    // 
 
 $route->get("/criar", "Web:create");                      // FORMULARIO PARA CRIAR USER
 $route->post("/criar", "Web:create");                     // FORMULARIO PARA CRIAR USER
@@ -29,10 +29,11 @@ $route->post("/procura/email", "Web:getEmail");           // UTILIZADO PELO AJAX
 /**
  *  PAINEL DE ADMINISTRAÇÃO
  */
-$route->group('admin', middleware: \Source\Filter\UserLogin::class);    // GRUPO ADMIN / APLICA FILTRO DE LOGIN
-$route->get('/dashboard', "Admin\Dashboard:dashboard");                 // PÁGINA PRINCIPAL DASHBOARD
-$route->get('/unidade/criar', "Admin\UnidadeComercial:cadastro");       // PÁGINA CRIAR UNIDADE COMERCIAL
-$route->get('/unidade/listar', "Admin\UnidadeComercial:unidadeList");       // PÁGINA CRIAR UNIDADE COMERCIAL
+$route->group('admin', middleware: \Source\Filter\UserLogin::class);                        // GRUPO ADMIN / APLICA FILTRO DE LOGIN
+$route->get('/dashboard', "Admin\Dashboard:dashboard");                                     // PÁGINA PRINCIPAL DASHBOARD
+$route->get('/unidade/criar', "Admin\UnidadeComercial:criar");                              // 
+$route->get('/unidade/listar', "Admin\UnidadeComercial:listarUnidades");                    //
+$route->get('/unidade/visualizar/{id}', "Admin\UnidadeComercial:visualizarUnidade");        // 
 
 /**
  *  ERROR

@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="<?= url('assets/template/') ?>css/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="<?= url('assets/template/') ?>images/favicon.png" />
+    <?php
+    if ($this->section('estilos')) {
+        echo $this->section('estilos');
+    }
+    ?>
 </head>
 
 <body>
@@ -184,7 +189,9 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
-
+                    <?php
+                        echo $this->section('conteudo');
+                    ?>
                 </div>
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
@@ -222,6 +229,9 @@
     <script src="<?= url('assets/template/') ?>js/dataTables.bootstrap4.js"></script>
     <!-- End custom js for this page-->
     <script src="<?= url('assets/template/') ?>js/jquery.cookie.js" type="text/javascript"></script>
+    <?php if($this->section('script')) {
+        echo $this->section('script');
+    }?>
 </body>
 
 </html>
