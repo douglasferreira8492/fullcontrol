@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `db_fullcontrol`.`unidade_comercial` (
   `bairro` VARCHAR(80) NULL,
   `municipio` VARCHAR(30) NULL,
   `UF` VARCHAR(2) NULL,
+  `cep` VARCHAR(9) NULL,
   `created_at` DATETIME NULL,
   `updated_at` DATETIME NULL,
   PRIMARY KEY (`id_unidade_comercial`))

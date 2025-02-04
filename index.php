@@ -33,7 +33,8 @@ $route->group('admin', middleware: \Source\Filter\UserLogin::class);            
 $route->get('/dashboard', "Admin\Dashboard:dashboard");                                     // PÁGINA PRINCIPAL DASHBOARD
 $route->get('/unidade/criar', "Admin\UnidadeComercial:criar");                              // 
 $route->get('/unidade/listar', "Admin\UnidadeComercial:listarUnidades");                    //
-$route->get('/unidade/visualizar/{id}', "Admin\UnidadeComercial:visualizarUnidade");        // 
+$route->get('/unidade/visualizar/{id}', "Admin\UnidadeComercial:visualizarUnidade");        //
+$route->post('/unidade/pesquisa/cnpj', "Admin\UnidadeComercial:pesquisarCNPJ");  
 
 /**
  *  ERROR

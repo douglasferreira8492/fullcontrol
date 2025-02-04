@@ -56,9 +56,7 @@ async function login()
         const content = await rawResponse.json();
         if(content.status == 200)
         {
-
             window.location.href = 'http://localhost/fullcontrol/admin/dashboard';
-
         } else if (content.status == 400)
         {
             messageDanger.textContent = "";

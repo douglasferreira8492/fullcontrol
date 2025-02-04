@@ -38,4 +38,4 @@ define("EMAIL",[
         return ROOT. "/{$uri}";
     }
     return ROOT;
- }
+}

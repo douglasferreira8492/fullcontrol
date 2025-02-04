@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'douglasferreira8492/fullcontrol',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '1c406c8e35293bd6eecaa450378d5f34430ce966',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -29,9 +29,9 @@
             'dev_requirement' => false,
         ),
         'douglasferreira8492/fullcontrol' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '1c406c8e35293bd6eecaa450378d5f34430ce966',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
