@@ -113,7 +113,6 @@
 <?php $this->end() ?>
 
 <?php $this->start('script') ?>
-<script src="<?= url('source/Boot/Function.js') ?>"></script>
 <script>
     // BOTOES FOMULARIO E MENSSAGEM
     let pesquisarInputCNPJ = document.getElementById('pesquisar-cnpj');
@@ -141,7 +140,8 @@
 
     // EVENTOS
     pesquisarInputCNPJ.addEventListener('keyup', (e) => {
-        formatCNPJ(pesquisarInputCNPJ);
+        let returnCNPJformat = formatCNPJ(pesquisarInputCNPJ);
+        pesquisarInputCNPJ.value = returnCNPJformat;
     });
     buttonPesquisar.addEventListener('click', (e) => {
         e.preventDefault();
@@ -172,7 +172,7 @@
             data[key] = value
         });
 
-        pesquisa_CNPJ_DB()
+        let resp = pesquisa_CNPJ_DB();
 
     }
 
@@ -198,7 +198,13 @@
         });
 
         const content = await rawResponse.json();
-        console.log(content);
+
+        console.log(content.status)
+        if (content.status == 200) {
+            criarElementoMenssagem('alert alert-danger', 'CNPJ já cadastrado', cnpjInput, 'red');
+        } else {
+            return await true;
+        }
     }
 
     // PESQUISA NO SPEEDIO O CNPJ PARA PREENCHER MAIS RÁPIDO O FORMULARIO
@@ -223,31 +229,16 @@
 
             // FAZ OS TESTES SE NÃO VIER VAZIO, SENÃO ESTIVER APLICA AS MASCARAS
             if (empresa['DATA ABERTURA'] != "") {
-                const partes = empresa['DATA ABERTURA'].split('/');
-                const dia = partes[0];
-                const mes = partes[1];
-                const ano = partes[2];
-                dateAbertura = `${ano}-${mes}-${dia}`;
+                dateAbertura = converterData(empresa['DATA ABERTURA']);
             }
             if (empresa.CNPJ != "") {
-                cnpjProcess = (empresa.CNPJ).substring(0, 18)
-                cnpjProcess = cnpjProcess.replace(/\D/g, "");
-                cnpjProcess = cnpjProcess.replace(/(\d{2})(\d)/, "$1.$2");
-                cnpjProcess = cnpjProcess.replace(/(\d{3})(\d)/, "$1.$2");
-                cnpjProcess = cnpjProcess.replace(/(\d{3})(\d)/, "$1/$2");
-                cnpjProcess = cnpjProcess.replace(/(\d{4})(\d)/, "$1-$2");
+                cnpjProcess = formatCNPJ(empresa.CNPJ);
             }
             if (empresa.DDD != "" && empresa.TELEFONE != "") {
-                telefoneProcess = (empresa.DDD + empresa.TELEFONE).substring(0, 15)
-                telefoneProcess = telefoneProcess.substring(0, 15)
-                telefoneProcess = telefoneProcess.replace(/\D/g, "");
-                telefoneProcess = telefoneProcess.replace(/^(\d{2})(\d)/g, "($1) $2");
-                telefoneProcess = telefoneProcess.replace(/(\d)(\d{4})$/, "$1-$2");
+                telefoneProcess = formatPhone(empresa.DDD + empresa.TELEFONE);
             }
             if (empresa.CEP != "") {
-                cepProcess = (empresa.CEP).substring(0, 8);
-                cepProcess = cepProcess.replace(/\D/g, '');
-                cepProcess = cepProcess.replace(/^(\d{5})(\d{3})$/, '$1-$2');
+                cepProcess = formatCEP(empresa.CEP);
             }
             // INSERE OS VALORES
             nomefantasia.value = empresa['NOME FANTASIA'];

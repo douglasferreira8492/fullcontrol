@@ -190,7 +190,7 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <?php
-                        echo $this->section('conteudo');
+                    echo $this->section('conteudo');
                     ?>
                 </div>
                 <!-- content-wrapper ends -->
@@ -210,6 +210,7 @@
     <!-- container-scroller -->
 
     <!-- plugins:js -->
+    <script src="<?= url('assets/script/') ?>Function.js"></script>
     <script src="<?= url('assets/template/') ?>vendors/base/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page-->
@@ -229,9 +230,9 @@
     <script src="<?= url('assets/template/') ?>js/dataTables.bootstrap4.js"></script>
     <!-- End custom js for this page-->
     <script src="<?= url('assets/template/') ?>js/jquery.cookie.js" type="text/javascript"></script>
-    <?php if($this->section('script')) {
+    <?php if ($this->section('script')) {
         echo $this->section('script');
-    }?>
+    } ?>
 </body>
 
 </html>

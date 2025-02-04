@@ -12,7 +12,7 @@
                         <address>
                             <p class="font-weight-bold"><?= $this->e($unidade->nome_fantasia) ?></p>
                             <p>
-                                <strong>CNPJ: </strong><?= $this->e($unidade->CNPJ) ?>
+                                <strong>CNPJ:</strong><?= $this->e($unidade->CNPJ) ?>
                             </p>
                             <p>
                                 <strong>CNAE: </strong> <?= $this->e($unidade->CNAE) ?>

@@ -4,53 +4,76 @@ let phoneObj = document.querySelector('.phone');
 let cepObj = document.querySelector('.mask-cep');
 
 cnpjObj.addEventListener('keyup',(e)=>{
-    formatCNPJ(cnpjObj);
+    let returnCNPJ = formatCNPJ(cnpjObj);
+    cnpjObj.value = returnCNPJ;
 });
 
-cepObj.addEventListener('keyup', (e) => {
-    formatCEP(cepObj);
+cepObj.addEventListener('keyup', (e) =>{
+    let returnCEP = formatCEP(cepObj);
+    cepObj.value = returnCEP;
 });
 
 phoneObj.addEventListener("keyup",(e) => {
-    formatPhone(phoneObj)
+    let returnPhone = formatPhone(phoneObj);
+    phoneObj.value = returnPhone;
 })
 
 function formatCNPJ(obj)
 {
-    let cnpj = obj.value
+    let cnpj;
+    if(typeof(obj) == 'object')
+    {
+        cnpj = obj.value
+    }else{
+        cnpj = obj;
+    }
     cnpj = cnpj.substring(0, 18)
     cnpj = cnpj.replace(/\D/g, "");
     cnpj = cnpj.replace(/(\d{2})(\d)/, "$1.$2");
     cnpj = cnpj.replace(/(\d{3})(\d)/, "$1.$2");
     cnpj = cnpj.replace(/(\d{3})(\d)/, "$1/$2");
     cnpj = cnpj.replace(/(\d{4})(\d)/, "$1-$2");
-    obj.value = cnpj
+    return cnpj;
 }
 
 function formatPhone(obj)
 {
-    phoneValue = obj.value
+    let phoneValue;
+    if(typeof(obj) == 'object')
+    {
+        phoneValue = obj.value
+    } else {
+        phoneValue = obj;
+    }
     phoneValue = phoneValue.substring(0, 15)
     phoneValue = phoneValue.replace(/\D/g, "");
     phoneValue = phoneValue.replace(/^(\d{2})(\d)/g, "($1) $2");
     phoneValue = phoneValue.replace(/(\d)(\d{4})$/, "$1-$2");
-    obj.value = phoneValue
+    return phoneValue
 }
 
-function formatCEP(obj) {
-    cep = obj.value;
+function formatCEP(obj)
+{
+    let cep = obj;
+    if (typeof(obj) == 'object') {
+        cep = obj.value
+    } else {
+        cep = obj;
+    }
     cep = cep.substring(0, 9)
     cep = cep.replace(/\D/g, '');
     cep = cep.replace(/^(\d{5})(\d{3})$/, '$1-$2');
-    obj.value = cep;
+    return cep;
 }
 
-function removeMascaraCNPJ(cnpj) {
+function removeMascaraCNPJ(cnpj)
+{
     // Substitui qualquer caractere que não seja número por uma string vazia
     return cnpj.replace(/\D/g, '');
 }
 
-function converterData(data) {
+function converterData(data)
+{
     const partes = data.split('/'); // Divide a data em partes usando o '/'
     const dia = partes[0];
     const mes = partes[1];

@@ -58,8 +58,6 @@ class UnidadeComercial{
         }
         $unidadeComercial = (new UnidadeComercialModel())->find("CNPJ = :ucnpj", "ucnpj={$inputData}")->fetch(true);
 
-        // echo json_encode($unidadeComercial);
-        // return;
         if($unidadeComercial == null)
         {
             $res = ['status' => '404', 'menssagem' => "Usuário não encontrado"];
