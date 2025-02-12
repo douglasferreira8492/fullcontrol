@@ -22,8 +22,10 @@ CREATE TABLE IF NOT EXISTS `db_fullcontrol`.`unidade_comercial` (
   `nome_fantasia` VARCHAR(80) NOT NULL,
   `razao_social` VARCHAR(80) NOT NULL,
   `CNPJ` VARCHAR(15) NULL,
+  `CPF` VARCHAR(14) NULL,
   `CNAE` VARCHAR(120) NULL,
   `CNAE_COD` VARCHAR(20) NULL,
+  `observacao` VARCHAR(30) NULL,
   `abertura` datetime NULL,
   `telefone` VARCHAR(12) NULL,
   `email` VARCHAR(80) NULL,
@@ -36,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `db_fullcontrol`.`unidade_comercial` (
   `cep` VARCHAR(9) NULL,
   `created_at` DATETIME NULL,
   `updated_at` DATETIME NULL,
+  `deleted_at` DATETIME NULL,
   PRIMARY KEY (`id_unidade_comercial`))
 ENGINE = InnoDB;
 

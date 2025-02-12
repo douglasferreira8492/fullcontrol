@@ -1,109 +1,32 @@
 <?php $this->layout("../../_theme/theme"); ?>
 
 <?php $this->start('conteudo') ?>
-<div class="row justify-content-center  stretch-card">
-    <div class="col-md-10" id="menssagem">
+<div class="row justify-content-center stretch-card">
+    <div class="col-md-12" id="menssagem">
     </div>
 </div>
 
 <div class="row justify-content-center">
-    <div class="col-md-10 grid-margin stretch-card">
+    <div class="col-md-12 grid-margin stretch-card">
         <div class="card">
+            <div class="card-header bg-primary">
+                <div class="row float-left">
+                    <div class="py-3 text-white">
+                        <h3 class=""> <i class="mdi mdi-domain menu-icon"></i>&nbspCadastrando unidade</h3>
+                    </div>
+                </div>
+            </div>
             <div class="card-body">
-                <h4 class="card-title mb-4">Cadastrar empresa</h4>
                 <form class="forms-sample">
-                    <div class="form-group">
-                        <div class="form-row align-items-center mb-4">
-
-                            <div class="col-md-6 my-1">
-                                <label for="">Pesquisar CNPJ:</label>
-                                <input type="text" class="form-control" id="pesquisar-cnpj" placeholder="CNPJ">
-                                <button type="submit" class="btn btn-primary mt-2 mb-4" id='button-pesquisar'>Pesquisar</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="nomefantasia">Nome Fantasia</label>
-                            <input type="text" class="form-control" id="nomefantasia" name="nomefantasia" placeholder="Nome Fantasia">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="razaosocial">Razão social</label>
-                            <input type="text" class="form-control" id="razaosocial" name="razaosocial" placeholder="Razão social">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="CNPJ">CNPJ</label>
-                            <input type="text" class="mask-cp form-control" id="CNPJ" name="CNPJ" placeholder="CNPJ">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="cnaedescricao">CNAE Descricao</label>
-                            <input type="text" class="form-control" id="cnaedescricao" name="cnaedescricao" placeholder="CNAE Descricao">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="cnaecodigo">CNAE Código</label>
-                            <input type="text" class="form-control" id="cnaecodigo" name="cnaecodigo" placeholder="CNAE Código">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="dataabertura">Data Abertura</label>
-                            <input type="date" class="form-control" id="dataabertura" name="dataabertura">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="telefone">Telefone</label>
-                            <input type="text" class="form-control phone" id="telefone" name="telefone" placeholder="Telefone">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="email">E-mail</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="E-mail">
-                        </div>
-                    </div>
-                    <h4 class="card-title mb-5">Endereço</h4>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="rua">Rua</label>
-                            <input type="text" class="form-control" id="rua" name="rua" placeholder="Rua">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="numero">Numero</label>
-                            <input type="email" class="form-control" id="numero" name="numero" placeholder="Numero">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="complemento">Complemento</label>
-                            <input type="text" class="form-control" id="complemento" name="complemento" placeholder="Complemento">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="bairro">Bairro</label>
-                            <input type="email" class="form-control" id="bairro" name="bairro" placeholder="Bairro">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="municipio">Municipio</label>
-                            <input type="text" class="form-control" id="municipio" name="municipio" placeholder="Municipio">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="uf">UF</label>
-                            <input type="email" class="form-control" id="uf" name="uf" placeholder="UF">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="municipio">CEP</label>
-                            <input type="text" class="mask-cep form-control" id="cep" name="cep" placeholder="cep">
-                        </div>
-                    </div>
+                    <?php $this->insert('Form') ?>
                 </form>
             </div>
             <div class="card-footer">
                 <div class="row float-right">
-                    <button type="submit" class="btn btn-primary mr-2" id='button-cadastrar'>Cadastrar</button>
+                    <button type="submit" class="btn btn-primary mr-2" id='button-save'>
+                        <i class="mdi mdi-content-save"></i>
+                        Salvar
+                    </button>
                     <a href="<?= url('admin/unidade/listar') ?>" class="btn btn-light">Cancelar</a>
                 </div>
             </div>
@@ -117,7 +40,7 @@
     // BOTOES FOMULARIO E MENSSAGEM
     let pesquisarInputCNPJ = document.getElementById('pesquisar-cnpj');
     let buttonPesquisar = document.getElementById('button-pesquisar');
-    let buttonCadastrar = document.getElementById('button-cadastrar');
+    let buttonSave = document.getElementById('button-save');
     let menssagem = document.getElementById('menssagem');
     let form = document.querySelector('form');
 
@@ -137,17 +60,17 @@
     let municipio = document.getElementById('municipio');
     let uf = document.getElementById('uf');
     let cep = document.getElementById('cep');
+    let tipoDocumento = document.getElementById('tipo-documento');
+    let cpf = document.getElementById('CPF');
 
     // EVENTOS
-    pesquisarInputCNPJ.addEventListener('keyup', (e) => {
-        let returnCNPJformat = formatCNPJ(pesquisarInputCNPJ);
-        pesquisarInputCNPJ.value = returnCNPJformat;
+    window.addEventListener('load', (e) => {
+        selecionaDocumento();
+    })
+    tipoDocumento.addEventListener('change', (e) => {
+        selecionaDocumento();
     });
-    buttonPesquisar.addEventListener('click', (e) => {
-        e.preventDefault();
-        pesquisaCNPJ(removeMascaraCNPJ(pesquisarInputCNPJ.value));
-    });
-    buttonCadastrar.addEventListener('click', (e) => {
+    buttonSave.addEventListener('click', (e) => {
         e.preventDefault();
         cadastrar()
     });
@@ -157,22 +80,86 @@
         menssagem.innerHTML = "";
         nomefantasia.style.borderColor = "";
         razaosocial.style.borderColor = "";
-
         if (nomefantasia.value == "") {
             criarElementoMenssagem('alert alert-danger', 'Você precisa preencher o Nome Fantasia.', nomefantasia, 'red');
             return false;
-        } else if (razaosocial.value == "") {
+        }
+        if (razaosocial.value == "") {
             criarElementoMenssagem('alert alert-danger', 'Você precisa preencher o Razao Social', razaosocial, 'red');
             return false;
         }
+        if (removeMascara(cnpjInput.value) != "") {
+            if (!validaCNPJ(cnpjInput.value)) {
+                criarElementoMenssagem('alert alert-danger', 'CNPJ inválido');
+                return false;
+            }
+        }
+        if (removeMascara(cpf.value) != "") {
+            if (!validaCPF(cpf.value)) {
+                criarElementoMenssagem('alert alert-danger', 'CPF inválido');
+                return false;
+            }
+        }
+        if (cnpjInput.value == "" && cpf.value == "") {
+            criarElementoMenssagem('alert alert-danger', 'Você precisa informar um documento!');
+            return false;
+        } else {
+            if (cnpjInput.value != "") {
+                let mens = pesquisa_CNPJ_DB().then(dados => {
+                    if (dados == 200) {
+                        criarElementoMenssagem('alert alert-danger', 'CNPJ já cadastrado', cnpjInput, 'red');
+                    } else if (dados == 400) {
+                        envia();
+                    }
 
+                }).catch(erro => {
+                    console.log(erro);
+                });
+
+            } else if (cpf.value != "") {
+                let mens = pesquisa_CPF_DB().then(dados => {
+
+                    if (dados == 200) {
+                        criarElementoMenssagem('alert alert-danger', 'CPF já cadastrado', cnpjInput, 'red');
+                    } else if (dados == 400) {
+                        envia();
+                    }
+                }).catch(erro => {
+                    console.log(erro);
+                });
+            }
+        }
+    }
+
+    // ENVIA PARA FUNÇÃO PHP
+    async function envia() {
+        let url = base_url('admin/unidade/criar');
         let formData = new FormData(form);
         let data = {};
         formData.forEach((value, key) => {
+
+            if (key == 'CNPJ' || key == 'CPF' || key == 'telefone' || key == 'cep') {
+                value = removeMascara(value);
+            }
             data[key] = value
         });
+        let options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'Application/json'
+            },
+            body: JSON.stringify(data)
+        };
 
-        let resp = pesquisa_CNPJ_DB();
+        try {
+            const rawResponse = await fetch(url, options);
+            const content = await rawResponse.json();
+            if (content.status == 200) {
+                window.location.href = base_url('admin/unidade/visualizar/' + content.id);
+            }
+        } catch (error) {
+            console.error(error);
+        }
 
     }
 
@@ -185,98 +172,65 @@
         if (campoBorder !== null && colorBorder != null) {
             campoBorder.style.borderColor = colorBorder;
         }
+        window.scrollTo(0, 0);
     }
 
+    // VERIFICA SE CNPJ JÁ ESTÁ CADASTRADO
     async function pesquisa_CNPJ_DB() {
-        let url = 'http://localhost/fullcontrol/admin/unidade/pesquisa/cnpj'
+        let url = base_url('admin/unidade/pesquisa/cnpj');
         const rawResponse = await fetch(url, {
             method: "POST",
             headers: {
                 'Content-Type': 'Application/json'
             },
-            body: JSON.stringify(removeMascaraCNPJ(cnpjInput.value))
+            body: JSON.stringify(removeMascara(cnpjInput.value))
         });
 
         const content = await rawResponse.json();
-
-        console.log(content.status)
         if (content.status == 200) {
-            criarElementoMenssagem('alert alert-danger', 'CNPJ já cadastrado', cnpjInput, 'red');
+            return 200;
         } else {
-            return await true;
+            return 400;
         }
     }
 
-    // PESQUISA NO SPEEDIO O CNPJ PARA PREENCHER MAIS RÁPIDO O FORMULARIO
-    async function pesquisaCNPJ(cnpj) {
+    // VERIFICA SE CPF JÁ ESTÁ CADASTRADO
+    async function pesquisa_CPF_DB() {
+        let url = base_url('admin/unidade/pesquisa/cpf');
+        const rawResponse = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'Application/json'
+            },
+            body: JSON.stringify(removeMascara(cpf.value))
+        });
 
-        let url = 'https://api-publica.speedio.com.br/buscarcnpj?cnpj=' + cnpj;
-        let options = {
-            method: 'GET',
-            header: {
-                'Content-Type': 'application/json'
+        try {
+            const content = await rawResponse.json();
+            if (content.status == 200) {
+                return (200);
+            } else {
+                return (400);
             }
-        };
-        const content = await fetch(url, options);
-        const empresa = await content.json();
+        } catch (error) {
+            alert('Ocorreu um erro inesperado');
+        }
+        // console.log(content.status);
 
-        // SE NÃO HOUVER ERRO NA REQUISIÇÃO
-        if (!empresa.error) {
-            let dateAbertura = "";
-            let cnpjProcess = "";
-            let telefoneProcess = "";
-            let cepProcess = "";
+    }
 
-            // FAZ OS TESTES SE NÃO VIER VAZIO, SENÃO ESTIVER APLICA AS MASCARAS
-            if (empresa['DATA ABERTURA'] != "") {
-                dateAbertura = converterData(empresa['DATA ABERTURA']);
-            }
-            if (empresa.CNPJ != "") {
-                cnpjProcess = formatCNPJ(empresa.CNPJ);
-            }
-            if (empresa.DDD != "" && empresa.TELEFONE != "") {
-                telefoneProcess = formatPhone(empresa.DDD + empresa.TELEFONE);
-            }
-            if (empresa.CEP != "") {
-                cepProcess = formatCEP(empresa.CEP);
-            }
-            // INSERE OS VALORES
-            nomefantasia.value = empresa['NOME FANTASIA'];
-            razaosocial.value = empresa['RAZAO SOCIAL'];
-            cnpjInput.value = cnpjProcess;
-            cnaedescricao.value = empresa['CNAE PRINCIPAL DESCRICAO'];
-            cnaecodigo.value = empresa['CNAE PRINCIPAL CODIGO'];
-            dataabertura.value = dateAbertura;
-            telefone.value = telefoneProcess;
-            email.value = empresa.EMAIL;
-            rua.value = empresa.LOGRADOURO;
-            numero.value = empresa.NUMERO;
-            complemento.value = empresa.COMPLEMENTO;
-            bairro.value = empresa.BAIRRO;
-            municipio.value = empresa.MUNICIPIO;
-            uf.value = empresa.UF;
-            cep.value = cepProcess;
+    // MOSTRA OU ESCONDE CAMPOS CNPJ E CPF
+    function selecionaDocumento() {
+        if (tipoDocumento.value === 'cnpj') {
+            cnpjInput.style.display = 'block';
+            cpf.style.display = 'none';
+            cpf.value = "";
+
+        } else if (tipoDocumento.value === 'cpf') {
+            cnpjInput.style.display = 'none';
+            cpf.style.display = 'block';
+            cnpjInput.value = "";
         }
     }
 </script>
 <?php $this->end() ?>
-
-<!-- BAIRRO:"ITAIM BIBI"
-CEP:"04542000"
-CNAE PRINCIPAL CODIGO:"4651601"
-CNAE PRINCIPAL DESCRICAO:"Comércio atacadista de equipamentos de informática"
-CNPJ:"00623904000173"
-COMPLEMENTO:"ANDAR 7 E 8 CONJ 71, 72, 81 E 82"
-DATA ABERTURA:"12/05/1995"
-DDD:"11"
-EMAIL:"fiscal@apple.com"
-LOGRADOURO:"LEOPOLDO COUTO MAGALHAES JUNIOR"
-MUNICIPIO:"São paulo"
-NOME FANTASIA:""
-NUMERO:"700"
-RAZAO SOCIAL:"APPLE COMPUTER BRASIL LTDA"
-STATUS:"ATIVA"
-TELEFONE:
-"55030000"
-TIPO LOGRADOURO:"RUA"
-UF:"SP -->

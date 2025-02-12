@@ -3,7 +3,7 @@ namespace Source\Models;
 
 use CoffeeCode\DataLayer\DataLayer;
 
-class User extends DataLayer{
+class UserModel extends DataLayer{
 
     public function __construct()
     {

@@ -2,7 +2,7 @@
 namespace Source\App;
 use League\Plates\Engine;
 use League\Plates\Template\Data;
-use Source\Models\User;
+use Source\Models\UserModel;
 use Source\Support\Email;
 
 class Web
@@ -36,7 +36,7 @@ class Web
             }
 
             // Atribui os dados decodificados às variáveis do usuário
-            $user = new User();
+            $user = new UserModel();
             $user->nome     = $inputData['name'];
             $user->email    = $inputData['email'];
             $user->password = password_hash($inputData['password'], PASSWORD_DEFAULT);
@@ -93,7 +93,7 @@ class Web
                 echo json_encode($resp);
                 exit;
             }
-            $user = (new User())->find("email = :uemail","uemail={$inputData['email']}")->fetch(true);
+            $user = (new UserModel())->find("email = :uemail","uemail={$inputData['email']}")->fetch(true);
             if($user == null)
             {
                 $resp = ['status' => 400,'message'=> 'Usuário não encontrado.'];
@@ -140,7 +140,7 @@ class Web
     public function getEmail(array $data): void
     {
         $callback['data'] = $data;
-        $userEmail = (new User())->find("email = :uemail","uemail={$data['email']}")->fetch(true);
+        $userEmail = (new UserModel())->find("email = :uemail","uemail={$data['email']}")->fetch(true);
         echo json_encode(isset($userEmail[0]->email) ? $userEmail[0]->email : $userEmail);
     }
 
@@ -160,7 +160,7 @@ class Web
                 exit;
             }
 
-            $user = (new User())->find("email = :uemail","uemail={$inputData['email']}")->fetch(true);
+            $user = (new UserModel())->find("email = :uemail","uemail={$inputData['email']}")->fetch(true);
             
             if($user == null)
             {
@@ -171,7 +171,7 @@ class Web
             
             try {
 
-                $userUpdate = (new User())->findById($user[0]->idusers);
+                $userUpdate = (new UserModel())->findById($user[0]->idusers);
                 $userUpdate->reset_hash = hash('sha256', HASH);
                 $userUpdate->save();
 
@@ -212,7 +212,7 @@ class Web
             $inputData = json_decode(file_get_contents('php://input'),true);
 
             try {
-                $user = (new User())->findById($inputData['id']);
+                $user = (new UserModel())->findById($inputData['id']);
                 $user->password = password_hash($inputData['password'], PASSWORD_DEFAULT);
                 $user->reset_hash = '';
                 $user->save();
@@ -226,7 +226,7 @@ class Web
         }else if($_SERVER['REQUEST_METHOD'] == "GET")
         {
             if (isset($data['id']) && isset($data['hashCode'])) {
-                $user = (new User())->find("idusers = :uid AND reset_hash = :uhash", "uid={$data['id']}&uhash={$data['hashCode']}")->fetch(true);
+                $user = (new UserModel())->find("idusers = :uid AND reset_hash = :uhash", "uid={$data['id']}&uhash={$data['hashCode']}")->fetch(true);
                 if ($user == null) {
                     header("Location: " . url());
                     exit;

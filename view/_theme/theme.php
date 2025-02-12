@@ -48,7 +48,7 @@
                             <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
                             <a class="dropdown-item">
                                 <div class="item-thumbnail">
-                                    <img src="images/faces/face4.jpg" alt="image" class="profile-pic">
+                                    <img src="<?= url('assets/template/') ?>images/faces/face4.jpg" alt="image" class="profile-pic">
                                 </div>
                                 <div class="item-content flex-grow">
                                     <h6 class="ellipsis font-weight-normal">David Grey
@@ -60,7 +60,7 @@
                             </a>
                             <a class="dropdown-item">
                                 <div class="item-thumbnail">
-                                    <img src="images/faces/face2.jpg" alt="image" class="profile-pic">
+                                    <img src="<?= url('assets/template/') ?>images/faces/face2.jpg" alt="image" class="profile-pic">
                                 </div>
                                 <div class="item-content flex-grow">
                                     <h6 class="ellipsis font-weight-normal">Tim Cook
@@ -172,9 +172,21 @@
                         </a>
                         <div class="collapse" id="auth">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="<?= url('admin/unidade/listar') ?>">Empresas</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="<?= url('admin/unidade/listar') ?>">Unidades</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html">Equipamentos</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html">Manutenção</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#user" aria-expanded="false" aria-controls="user">
+                            <i class="mdi mdi-account menu-icon"></i>
+                            <span class="menu-title">Usuarios</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="user">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="<?= url('admin/usuario/listar') ?>">Usuarios</a></li>
                             </ul>
                         </div>
                     </li>
@@ -230,7 +242,8 @@
     <script src="<?= url('assets/template/') ?>js/dataTables.bootstrap4.js"></script>
     <!-- End custom js for this page-->
     <script src="<?= url('assets/template/') ?>js/jquery.cookie.js" type="text/javascript"></script>
-    <?php if ($this->section('script')) {
+    <?php if ($this->section('script'))
+    {
         echo $this->section('script');
     } ?>
 </body>

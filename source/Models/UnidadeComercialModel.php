@@ -6,7 +6,7 @@ class UnidadeComercialModel extends DataLayer{
 
     public function __construct()
     {
-        parent::__construct('unidade_comercial',['nome_fantasia','razao_social'],'id_unidade_comercial');
+        parent::__construct('unidade_comercial',['nome_fantasia','razao_social'],'id_unidade_comercial',true);
     }
 
 }
