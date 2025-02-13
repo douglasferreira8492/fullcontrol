@@ -88,24 +88,99 @@
             criarElementoMenssagem('alert alert-danger', 'Você precisa preencher o Razao Social', razaosocial, 'red');
             return false;
         }
-        if (removeMascara(cnpjInput.value) != "") {
-            if (!validaCNPJ(cnpjInput.value)) {
-                criarElementoMenssagem('alert alert-danger', 'CNPJ inválido');
-                return false;
-            }
-        }
-        if (removeMascara(cpf.value) != "") {
-            if (!validaCPF(cpf.value)) {
-                criarElementoMenssagem('alert alert-danger', 'CPF inválido');
-                return false;
-            }
-        }
+        // if (removeMascara(cnpjInput.value) != "") {
+        //     if (!validaCNPJ(cnpjInput.value)) {
+        //         criarElementoMenssagem('alert alert-danger', 'CNPJ inválido');
+        //         return false;
+        //     }
+        // }
+        // if (removeMascara(cpf.value) != "") {
+        //     if (!validaCPF(cpf.value)) {
+        //         criarElementoMenssagem('alert alert-danger', 'CPF inválido');
+        //         return false;
+        //     }
+        // }
         if (cnpjInput.value == "" && cpf.value == "") {
             criarElementoMenssagem('alert alert-danger', 'Você precisa informar um documento!');
             return false;
         } else {
-            envia();
+
+            if (cnpjInput.value != "") {
+                pesquisarCNPJedit().then(dados => {
+                    if (dados.status == 400) {
+                        console.log(dados.status)
+                        envia();
+                    } else {
+                        criarElementoMenssagem('alert alert-danger', 'Esse CNPJ já está cadastrado.');
+                        return false;
+                    }
+                }).catch(error => {
+                    criarElementoMenssagem('alert alert-danger', 'Ocorreu um erro.');
+                    return false;
+                });
+            }
+
+            if (cpf.value != "") {
+                pesquisarCPFedit().then(dados => {
+                        if (dados.status == 400) {
+                            envia();
+                        } else {
+                            criarElementoMenssagem('alert alert-danger', 'Esse CPF já está cadastrado.');
+                            return false;
+                        }
+                    })
+                    .catch(error => {
+                        criarElementoMenssagem('alert alert-danger', 'Ocorreu um erro.');
+                        return false;
+                    });
+            }
         }
+    }
+
+    async function pesquisarCNPJedit() {
+        let url = base_url("admin/unidade/pesquisa/cnpjEdit");
+        let dataForm = new FormData(form);
+        let data = {};
+        dataForm.forEach((value, key) => {
+            if (key == 'CNPJ') {
+                value = removeMascara(value);
+            }
+            data[key] = value;
+        });
+        let options = {
+            method: "POST",
+            headers: {
+                'Content-Type': "Application-Json"
+            },
+            body: JSON.stringify(data)
+        }
+
+        const rawResponse = await fetch(url, options);
+        const content = await rawResponse.json();
+        return content;
+    }
+
+    async function pesquisarCPFedit() {
+        let url = base_url("admin/unidade/pesquisa/cpfEdit");
+        let dataForm = new FormData(form);
+        let data = {};
+        dataForm.forEach((value, key) => {
+            if (key == 'CPF') {
+                value = removeMascara(value);
+            }
+            data[key] = value;
+        });
+        let options = {
+            method: "POST",
+            headers: {
+                'Content-Type': "Application-Json"
+            },
+            body: JSON.stringify(data)
+        }
+
+        const rawResponse = await fetch(url, options);
+        const content = await rawResponse.json();
+        return content;
     }
 
     // ENVIA PARA FUNÇÃO PHP

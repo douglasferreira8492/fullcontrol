@@ -13,7 +13,6 @@ class UserLogin
             !isset($_SESSION[SESSION_USER])
             || !$_SESSION[SESSION_USER]
             || !(int)$_SESSION[SESSION_USER]->idusers > 0
-            ||  (int)$_SESSION[SESSION_USER]->admin_level < 2
         ) {
             header("Location: " . url());
             exit;

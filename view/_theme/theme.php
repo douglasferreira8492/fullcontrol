@@ -201,6 +201,10 @@
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
+                    <div class="row justify-content-center stretch-card">
+                        <div class="col-md-12" id="menssagem">
+                        </div>
+                    </div>
                     <?php
                     echo $this->section('conteudo');
                     ?>
@@ -242,8 +246,7 @@
     <script src="<?= url('assets/template/') ?>js/dataTables.bootstrap4.js"></script>
     <!-- End custom js for this page-->
     <script src="<?= url('assets/template/') ?>js/jquery.cookie.js" type="text/javascript"></script>
-    <?php if ($this->section('script'))
-    {
+    <?php if ($this->section('script')) {
         echo $this->section('script');
     } ?>
 </body>

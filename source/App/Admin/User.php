@@ -36,7 +36,7 @@ class User{
             $user->email    = $inputData['email'];
             $user->password = password_hash($inputData['password'], PASSWORD_DEFAULT);
             $user->ativo    = (int)$inputData['status'];
-            $user->admin_level = $inputData['adminLevel'];;
+            $user->admin_level = $inputData['adminLevel'];
 
             try {
                 // Salva o usuário
@@ -59,8 +59,7 @@ class User{
     // LISTA TODOS USUÁRIOS
     public function listar(): void
     {
-        $users = (new UserModel())->find()->fetch(true);
-        // var_dump($users);
+        $users = (new UserModel())->find("deleted_at = :deleted","deleted=false")->fetch(true);
         echo $this->view->render('Users',[
             'title' => SITE . " | Listando usuários",
             'usuarios' => $users
@@ -81,19 +80,69 @@ class User{
         }
     }
 
+    // DELETAR
+    public function deletar($data): void
+    {
+        $resp = [];
+        try {
+            $usuario = (new UserModel())->findById((int)$data['id']);
+            $usuario->deleted_at = (new DateTime())->format('Y-m-d H:i:s');
+            $usuario->save();
+            $resp = ['status' => 200];
+            echo json_encode($resp);
+        } catch (\Throwable $th) {
+            $resp = ['status' => 200];
+            echo json_encode($resp);
+        }
+    }
+
     // EDITAR
     public function editar($data): void
     {
-        $usuario = (new UserModel())->findById((int)$data['id']);
-        if ($usuario != null) 
+
+        if($_SERVER['REQUEST_METHOD'] == "POST")
         {
-            echo $this->view->render('Editar', [
-                'title' => SITE . " | Usuario",
-                'usuario' => $usuario
-            ]);
-        } else {
-            header("Location: " . url('admin/usuario/listar'));
+            $resp = [];
+            $inputData = json_decode(file_get_contents('php://input'),true);
+            if($inputData == null)
+            {
+                $resp = ['status' => 400];
+                echo json_encode($resp);
+            }
+
+            try {
+                $usuario = (new UserModel())->findById((int)$inputData['idusers']);
+                $usuario->nome     = $inputData['nome'];
+                $usuario->email    = $inputData['email'];
+                if($inputData['password'] != "")
+                {
+                    $usuario->password = password_hash($inputData['password'], PASSWORD_DEFAULT);
+                }
+                $usuario->ativo    = (int)$inputData['status'];
+                $usuario->admin_level = $inputData['adminLevel'];
+                $usuario->save();
+                $resp = ['status' => 200];
+                echo json_encode($resp);
+
+            } catch (\Throwable $th) {
+                $resp = ['status' => 200];
+                echo json_encode($resp);
+            }
+
+        }else{
+
+            $usuario = (new UserModel())->findById((int)$data['id']);
+            if ($usuario != null) {
+                echo $this->view->render('Editar', [
+                    'title' => SITE . " | Usuario",
+                    'usuario' => $usuario
+                ]);
+            } else {
+                header("Location: " . url('admin/usuario/listar'));
+            }
+
         }
+        
     }
 
     // BUSCA E-MAIL

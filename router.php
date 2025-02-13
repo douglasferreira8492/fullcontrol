@@ -28,7 +28,8 @@ $route->post("/resetPassword", "Web:resetPassword"); //
 */
 $route->namespace('Source\App\Admin');
 $route->group('admin', middleware: \Source\Filter\UserLogin::class);
-$route->get('/dashboard', "Dashboard:dashboard"); 
+$route->get('/dashboard', "Dashboard:dashboard");
+// UNIDADE
 $route->get('/unidade/criar', "UnidadeComercial:criar");
 $route->post('/unidade/criar', "UnidadeComercial:criar");
 $route->get('/unidade/listar', "UnidadeComercial:listarUnidades");
@@ -36,18 +37,19 @@ $route->get('/unidade/visualizar/{id}', "UnidadeComercial:visualizarUnidade");
 $route->get('/unidade/editar/{id}', "UnidadeComercial:editarUnidade");
 $route->post('/unidade/editar', "UnidadeComercial:editarUnidade");
 $route->post('/unidade/pesquisa/cnpj', "UnidadeComercial:pesquisarCNPJ");
-$route->post('/unidade/pesquisa/cpf', "UnidadeComercial:pesquisarCPF");
+$route->post('/unidade/pesquisa/cnpjEdit', "UnidadeComercial:pesquisarCNPJedit");
+$route->post('/unidade/pesquisa/cpfEdit', "UnidadeComercial:pesquisarCPFedit");
 $route->post('/unidade/delete/{id}', "UnidadeComercial:delete");
-
+// USUARIO
 $route->get('/usuario/listar', "User:listar");
 $route->get('/usuario/criar', "User:criar");
 $route->get('/usuario/editar/{id}', "User:editar");
+$route->post('/usuario/editar/', "User:editar");
+$route->get('/usuario/visualizar/{id}', "User:visualizarUsuario");
 $route->post('/usuario/criar', "User:criar");
 $route->post('/usuario/buscaEmail', "User:buscaEmail");
 $route->post('/usuario/buscaEmailEdit', "User:buscaEmailEdit");
-$route->get('/usuario/visualizar/{id}', "User:visualizarUsuario");
-
-
+$route->get('/usuario/delete/{id}', "User:deletar");
 
 /**
 * ERROR

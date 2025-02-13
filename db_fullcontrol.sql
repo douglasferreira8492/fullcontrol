@@ -76,6 +76,7 @@ CREATE TABLE IF NOT EXISTS `db_fullcontrol`.`users` (
   `reset_hash` VARCHAR(255) NULL,
   `created_at` DATETIME NULL,
   `updated_at` DATETIME NULL,
+  `deleted_at` DATETIME NULL,
   PRIMARY KEY (`idusers`))
 ENGINE = InnoDB;
 

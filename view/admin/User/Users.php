@@ -62,7 +62,7 @@
                                             <a href="<?= url("admin/usuario/visualizar/{$value->idusers}") ?>" class="btn btn-primary btn-sm btn-icon-text">
                                                 <i class="mdi mdi-eye"></i> Ver
                                             </a>
-                                            <a href='<?= url("admin/unidade/delete/{$value->idusers}") ?>' class="btn-excluir mr-1 btn btn-danger btn-sm btn-icon-text">
+                                            <a href='<?= url("admin/usuario/delete/{$value->idusers}") ?>' class="btn-excluir mr-1 btn btn-danger btn-sm btn-icon-text">
                                                 <i class="mdi mdi-delete"></i>Excluir
                                             </a>
                                         </td>
@@ -96,6 +96,38 @@
         });
 
     });
+
+    let botoes = document.querySelectorAll('.btn-excluir');
+
+    botoes.forEach((botao) => {
+
+        botao.addEventListener('click', (e) => {
+            e.preventDefault();
+            deletar(botao.href).then(dados => {
+                if (dados.status == 200)
+                {
+                    let linha = e.target.closest('tr');
+                    linha.remove();
+                    let menssagem = document.getElementById('menssagem');
+                    let div = document.createElement('div');
+                    div.setAttribute('class', 'alert alert-success');
+                    div.textContent = "Usuário excluído com sucesso!";
+                    menssagem.appendChild(div);
+                }
+            }).catch(error => {
+
+            });
+        })
+
+    });
+
+    async function deletar(urlDelete) {
+        let options = {
+            method: 'GET'
+        };
+        const rawResponse = await fetch(urlDelete, options);
+        return rawResponse.json();
+    }
 </script>
 
 <?php $this->end() ?>

@@ -60,7 +60,7 @@
             nome.value == "" || email.value == "" ||
             adminLevel.value == ""
         ) {
-            if (name.value == "") {
+            if (nome.value == "") {
                 resp[1] = "O nome está vazio.";
             }
             if (email.value == "") {
@@ -69,7 +69,6 @@
             if (adminLevel.value == "") {
                 resp[5] = "Precisa informar um nível de administrador.";
             }
-
             insereMenssagem(resp);
 
         } else {
@@ -99,9 +98,8 @@
             if (testPass.length > 0) {
                 insereMenssagem(testPass);
             } else {
-                buscaEmailEdit().then(data => {  
-                    if (data.status == 400)
-                    {
+                buscaEmailEdit().then(data => {
+                    if (data.status == 400) {
                         try {
                             editar().then(dados => {
                                 if (dados.status == 200) {
@@ -131,12 +129,11 @@
         }
     });
 
-    async function buscaEmailEdit()
-    {
+    async function buscaEmailEdit() {
         let url = base_url("admin/usuario/buscaEmailEdit");
         let dataForm = new FormData(form);
         let data = {};
-        dataForm.forEach((value,key)=>{
+        dataForm.forEach((value, key) => {
             data[key] = value;
         });
         let options = {
@@ -153,7 +150,7 @@
     }
 
     async function editar() {
-        let url = base_url("admin/usuario/criar");
+        let url = base_url("admin/usuario/editar");
         let dataForm = new FormData(form);
         let inputData = {};
 

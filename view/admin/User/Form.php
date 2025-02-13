@@ -1,7 +1,3 @@
-<div class="row justify-content-center stretch-card">
-    <div class="col-md-12" id="menssagem">
-    </div>
-</div>
 <div class="form-row">
     <input type="hidden" class="form-control" id="idusers" name="idusers" value="<?= isset($usuario->idusers) ? $usuario->idusers : "" ?>">
     <div class="form-group col-md-6">
@@ -16,11 +12,11 @@
 <div class="form-row">
     <div class="form-group col-md-6">
         <label for="password"><strong>Senha</strong></label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Senha" >
+        <input type="password" class="form-control" id="password" name="password" placeholder="**********">
     </div>
     <div class="form-group col-md-6">
         <label for="passwordConfirm"><strong>Confirmar senha</strong></label>
-        <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Confirmar senha" >
+        <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="**********">
     </div>
 </div>
 <div class="form-row">
@@ -50,5 +46,7 @@
         </select>
     </div>
 </div>
-<div class="col-md-12" id="menssagem-form">
+<div class="form-row">
+    <div class="col-md-12" id="menssagem-form">
+    </div>
 </div>

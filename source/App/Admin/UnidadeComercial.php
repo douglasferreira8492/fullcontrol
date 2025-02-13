@@ -172,7 +172,7 @@ class UnidadeComercial{
     public function pesquisarCNPJ($data):void
     {
         $res = [];
-        $inputData = json_decode(file_get_contents('php://input',true));
+        $inputData = json_decode(file_get_contents('php://input'),true);
         if($inputData === null)
         {
             $res = ['status' => 404,'menssagem' => "Envie os dados"];
@@ -190,11 +190,67 @@ class UnidadeComercial{
         echo json_encode($res);
     }
 
+    // PESQUISA CPNJ // UTILIZADA PELO JAVASCRIPT
+    public function pesquisarCNPJedit($data): void
+    {
+        $res = [];
+        $inputData = json_decode(file_get_contents('php://input'),true);
+        if ($inputData === null) {
+            $res = ['status' => 400];
+            echo json_encode($res);
+            return;
+        }
+        $unidadeComercial = (new UnidadeComercialModel())->find("CNPJ = :ucnpj", "ucnpj={$inputData['CNPJ']}")->fetch(true);
+        if (isset($unidadeComercial[0])) {
+            $unidadeComercial = $unidadeComercial[0];
+        }
+        if($unidadeComercial != null)
+        {
+            if($unidadeComercial->id_unidade_comercial == $inputData['id_unidade_comercial'])
+            {
+                $res = ['status' => 400];
+            }else{
+                $res = ['status' => 200];
+            }
+        }else{
+            $res = ['status' => 400];
+        }
+        echo json_encode($res);
+    }
+
+    // PESQUISA CPNJ // UTILIZADA PELO JAVASCRIPT
+    public function pesquisarCPFedit($data): void
+    {
+        $res = [];
+        $inputData = json_decode(file_get_contents('php://input'),true);
+        if ($inputData === null) {
+            $res = ['status' => 400];
+            echo json_encode($res);
+            return;
+        }
+        $unidadeComercial = (new UnidadeComercialModel())->find("CPF = :ucpf", "ucpf={$inputData['CPF']}")->fetch(true);
+        if (isset($unidadeComercial[0])) {
+            $unidadeComercial = $unidadeComercial[0];
+        }
+        if ($unidadeComercial != null)
+        {
+            if ($unidadeComercial->id_unidade_comercial == $inputData['id_unidade_comercial'])
+            {
+                $res = ['status' => 400];
+            } else {
+                $res = ['status' => 200];
+            }
+        } else {
+            $res = ['status' => 400];
+        }
+        echo json_encode($res);
+    }
+
     //PESQUISA CPF // UTILIZADA PELO CPF
     public function pesquisarCPF($data): void
     {
         $res = [];
-        $inputData = json_decode(file_get_contents('php://input', true));
+        $inputData = json_decode(file_get_contents('php://input'),true);
         if ($inputData === null) {
             $res = ['status' => 404, 'menssagem' => "Envie os dados"];
             echo json_encode($res);
